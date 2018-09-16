@@ -32,3 +32,11 @@ new_http_archive(
     build_file = "utils/fff.BUILD",
     strip_prefix = "fff-master",
 )
+
+new_http_archive(
+    name = "cmock",
+    url = "https://github.com/ThrowTheSwitch/CMock/archive/v2.4.6.zip",
+    sha256 = "8fa6dcb88778e029dd4a69ce7d3df529f9f022e5b6ec93ae378cd8b898eb05d4",
+    build_file = "utils/cmock.BUILD",
+    strip_prefix = "CMock-2.4.6",
+)

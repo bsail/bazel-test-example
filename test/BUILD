@@ -21,6 +21,7 @@ cc_test(
     size = "small",
     deps = [
         "@unity//:unity_framework",
+        "@cmock//:cmock",
         "//src:example",
     ],
 )
