@@ -23,5 +23,5 @@ new_http_archive(
 git_repository(
     name = "gtest",
     remote = "https://github.com/google/googletest",
-    commit = "3306848f697568aacf4bcca330f6bdd5ce671899",
+    commit = "2fe3bd994b3189899d93f1d5a881e725e046fdc2",
 )
