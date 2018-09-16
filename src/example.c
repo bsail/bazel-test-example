@@ -3,6 +3,7 @@
 
 int example_func(void)
 {
-	library_func();
+	for (int i = 0; i < 5; ++i)
+		library_func(i);
 	return 0;
 }

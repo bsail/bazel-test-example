@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-int example_func(void);
+	int example_func(void);
 
 #ifdef  __cplusplus
 }

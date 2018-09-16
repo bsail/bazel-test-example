@@ -1,7 +1,8 @@
 #include "example.h"
 
-int main() {
-  for(;;) {
-  	example_func();
-  }
+int main()
+{
+	for (;;) {
+		example_func();
+	}
 }

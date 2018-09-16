@@ -2,20 +2,22 @@
 #include "unity_fixture.h"
 #include "src/example.h"
 
-void setUp() {
+void setUp()
+{
 }
 
-void tearDown() {
+void tearDown()
+{
 }
 
 void test_example(void)
 {
-	TEST_ASSERT_EQUAL(0,example_func());
+	TEST_ASSERT_EQUAL(0, example_func());
 }
 
 int main()
 {
-  UNITY_BEGIN();
-  RUN_TEST(test_example);
-  return UNITY_END();
+	UNITY_BEGIN();
+	RUN_TEST(test_example);
+	return UNITY_END();
 }
