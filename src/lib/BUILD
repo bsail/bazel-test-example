@@ -1,3 +1,5 @@
+load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
+
 config_setting(
     name = "avr",
     values = {
