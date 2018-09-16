@@ -1,17 +1,13 @@
-genrule(
-    name = "example_runner",
-    srcs = ["example_test.c"],
-    outs = ["example_test_Runner.c"],
-    tools = [
-        "@unity//:runner_generator",
-        "@unity//:type_sanitizer",
-    ],
-    cmd = "ruby $(location @unity//:runner_generator) $< $@",
+load("//utils:unity_runner_generator.bzl", "unity_runner")
+
+unity_runner(
+    name = "runner_example_test.c",
+    src = "example_test.c",
 )
 
 cc_test(
     name = "example_unity_test",
-    srcs = ["example_test.c","example_test_Runner.c"],
+    srcs = ["example_test.c","runner_example_test.c"],
     copts = [
         "-Iexternal/unity/src/",
         "-Iexternal/unity/extras/fixture/src/"
