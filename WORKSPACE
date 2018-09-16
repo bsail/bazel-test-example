@@ -19,3 +19,9 @@ new_http_archive(
     sha256 = "f1c7a30917be617668a5a2608f1185338ce58f51e7ba3c8247dcb76263bc2e96",
     strip_prefix = "Unity-2.4.1",
 )
+
+git_repository(
+    name = "gtest",
+    remote = "https://github.com/google/googletest",
+    commit = "3306848f697568aacf4bcca330f6bdd5ce671899",
+)
