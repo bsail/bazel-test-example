@@ -11,3 +11,11 @@ http_archive(
         "https://github.com/bsail/bazel-avr-tools/archive/master.zip",
     ],
 )
+
+new_http_archive(
+    name = "unity",
+    url = "https://github.com/ThrowTheSwitch/Unity/archive/v2.4.1.zip",
+    build_file = "utils/unity.BUILD",
+    sha256 = "f1c7a30917be617668a5a2608f1185338ce58f51e7ba3c8247dcb76263bc2e96",
+    strip_prefix = "Unity-2.4.1",
+)

@@ -1,21 +1,5 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
 
-
-# Written for Adafruit Trinket (ATTiny 85)
-#
-# Functions:
-#
-# 1. Idle state: output off
-# 2. begin idle timer
-# 3. Input pin goes active:
-#      a. if idle timer > X
-#         delay for x seconds
-#      b. disable idle timer
-#      c. enable output pin
-#      d. enable and reset shutdown timer
-# 4. When shutdown timer expires, output is disabled
-#
-
 config_setting(
     name = "avr",
     values = {
@@ -26,6 +10,9 @@ config_setting(
 cc_binary(
     name = "main",
     srcs = ["main.c"],
+    deps = [
+        ":example",
+    ],
     copts = select({
         ":avr": ["-mmcu=$(MCU)"],
         "//conditions:default": [],
@@ -34,6 +21,21 @@ cc_binary(
         ":avr": ["-mmcu=$(MCU)"],
         "//conditions:default": [],
     }),
+)
+
+cc_library(
+    name = "example",
+    srcs = ["example.c"],
+    hdrs = ["example.h"],
+    copts = select({
+        ":avr": ["-mmcu=$(MCU)"],
+        "//conditions:default": [],
+    }),
+    linkopts = select({
+        ":avr": ["-mmcu=$(MCU)"],
+        "//conditions:default": [],
+    }),
+    visibility = ["//test:__pkg__"],
 )
 
 hex(

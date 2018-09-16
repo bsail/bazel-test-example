@@ -1,8 +1,7 @@
-#include <avr/io.h>
-#include <util/delay.h>
+#include "example.h"
 
 int main() {
   for(;;) {
-    _delay_ms(1000);
+  	example_func();
   }
 }
