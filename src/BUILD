@@ -27,6 +27,9 @@ cc_library(
     name = "example",
     srcs = ["example.c"],
     hdrs = ["example.h"],
+    deps = [
+        "//src/lib:library",
+    ],
     copts = select({
         ":avr": ["-mmcu=$(MCU)"],
         "//conditions:default": [],
