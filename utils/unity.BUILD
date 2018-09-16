@@ -27,10 +27,17 @@ cc_library(
     visibility = ["//visibility:public"],
 )
 
-sh_library(
+filegroup(
     name = "runner_generator",
     srcs = [
       "auto/generate_test_runner.rb",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "type_sanitizer",
+    srcs = [
       "auto/type_sanitizer.rb",
     ],
     visibility = ["//visibility:public"],

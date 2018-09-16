@@ -2,8 +2,11 @@ genrule(
     name = "example_runner",
     srcs = ["example_test.c"],
     outs = ["example_test_Runner.c"],
-    tools = ["@unity//:runner_generator",],
-    cmd = "ruby external/unity/auto/generate_test_runner.rb $< $@",
+    tools = [
+        "@unity//:runner_generator",
+        "@unity//:type_sanitizer",
+    ],
+    cmd = "ruby $(location @unity//:runner_generator) $< $@",
 )
 
 cc_test(
