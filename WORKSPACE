@@ -25,3 +25,10 @@ git_repository(
     remote = "https://github.com/google/googletest",
     commit = "2fe3bd994b3189899d93f1d5a881e725e046fdc2",
 )
+
+new_http_archive(
+    name = "fff",
+    url = "https://github.com/meekrosoft/fff/archive/master.zip",
+    build_file = "utils/fff.BUILD",
+    strip_prefix = "fff-master",
+)

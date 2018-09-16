@@ -37,6 +37,7 @@ cc_test(
     deps = [
         "@gtest//:gtest",
         "@gtest//:gtest_main", # Only if hello_test.cc has no main()
+        "@fff//:fff",
         "//src:example",
     ],
 )
