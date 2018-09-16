@@ -26,3 +26,12 @@ cc_library(
     copts = ["-Iexternal/unity/src/"],
     visibility = ["//visibility:public"],
 )
+
+sh_library(
+    name = "runner_generator",
+    srcs = [
+      "auto/generate_test_runner.rb",
+      "auto/type_sanitizer.rb",
+    ],
+    visibility = ["//visibility:public"],
+)

@@ -1,6 +1,14 @@
+genrule(
+    name = "example_runner",
+    srcs = ["example_test.c"],
+    outs = ["example_test_Runner.c"],
+    tools = ["@unity//:runner_generator",],
+    cmd = "ruby external/unity/auto/generate_test_runner.rb $< $@",
+)
+
 cc_test(
     name = "example_unity_test",
-    srcs = ["example_test.c"],
+    srcs = ["example_test.c","example_test_Runner.c"],
     copts = [
         "-Iexternal/unity/src/",
         "-Iexternal/unity/extras/fixture/src/"
