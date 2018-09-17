@@ -7,6 +7,13 @@ config_setting(
     },
 )
 
+config_setting(
+    name = "use_cmock",
+    define_values = {
+        "cmock": "true",
+    }
+)
+
 cc_binary(
     name = "main",
     srcs = ["main.c"],
@@ -27,9 +34,10 @@ cc_library(
     name = "example",
     srcs = ["example.c"],
     hdrs = ["example.h"],
-    deps = [
-        "//src/lib:library",
-    ],
+    deps = select({
+        ":use_cmock": ["//src/lib:mock_library"],
+        "//conditions:default": ["//src/lib:library"],
+    }),
     copts = select({
         ":avr": ["-mmcu=$(MCU)"],
         "//conditions:default": [],

@@ -15,7 +15,6 @@ cc_test(
         "-Iexternal/unity/src/",
         "-Iexternal/unity/extras/fixture/src/",
         "-Iexternal/cmock/src/",
-        "-Isrc/lib/",
     ],
     size = "small",
     deps = [

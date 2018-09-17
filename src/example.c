@@ -1,4 +1,4 @@
-#include "lib/library.h"
+#include "lib/inc/library.h"
 #include "example.h"
 
 int example_func(void)

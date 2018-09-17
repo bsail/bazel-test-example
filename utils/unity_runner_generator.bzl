@@ -17,7 +17,7 @@ def unity_runner(name, src, **kwargs):
     **kwargs
   )
 
-def cmock_generator(prefix, src, type, **kwargs):
+def cmock_generator(prefix, src, where, type, **kwargs):
   """Create a Unity test runner for the src header file.
 
   The generated file is prefixed with 'Runner_'.
@@ -25,7 +25,7 @@ def cmock_generator(prefix, src, type, **kwargs):
   native.genrule(
     name = "header_"+prefix+"_"+type,
     srcs = [src],
-    outs = ["mock_"+prefix+"."+type],
+    outs = [where+"/mock_"+prefix+"."+type],
     tools = [
         "@cmock//:cmock_rb",
         "@cmock//:lib",
@@ -41,4 +41,20 @@ def cmock_generator(prefix, src, type, **kwargs):
     ruby $(location @cmock//:cmock_rb) -o$(location //utils/mock:cmock_config) $< && \
     cat mock_"+prefix+"."+type+" > $@",
     **kwargs
+  )
+
+def cmock_generate(prefix, src, **kwargs):
+  cmock_generator(
+      prefix = prefix,
+      src = src,
+      where = "inc",
+      type = "h",
+      **kwargs
+  )
+  cmock_generator(
+      prefix = prefix,
+      src = src,
+      where = "src",
+      type = "c",
+      **kwargs
   )

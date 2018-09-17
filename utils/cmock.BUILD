@@ -6,7 +6,7 @@ cc_library(
         "-Iexternal/unity/extras/fixture/src/",
     ],
     deps = [
-        "@unity//:unity",
+        #"@unity//:unity",
         "@unity//:unity_framework",
     ],
   visibility = ["//visibility:public"],
