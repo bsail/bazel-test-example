@@ -23,7 +23,6 @@ cc_test(
         "@unity//:unity_framework",
         "@cmock//:cmock",
         "//src:example",
-        #"//src/lib:mock_library",
     ],
 )
 

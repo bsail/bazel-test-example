@@ -11,6 +11,7 @@ def unity_runner(name, src, **kwargs):
         "@unity//:runner_generator",
         "@unity//:type_sanitizer",
     ],
+    local = 1,
     cmd = "ruby $(location @unity//:runner_generator) $< $@",
     **kwargs
   )
