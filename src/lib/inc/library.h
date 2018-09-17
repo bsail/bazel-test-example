@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-	void library_func(int a);
+	int library_func(int a);
 
 #ifdef  __cplusplus
 }

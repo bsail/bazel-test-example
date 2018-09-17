@@ -3,7 +3,7 @@
 #include "fff.h"
 
 DEFINE_FFF_GLOBALS;
-FAKE_VOID_FUNC(library_func, int);
+FAKE_VALUE_FUNC(int, library_func, int);
 FAKE_VOID_FUNC(another_func, int);
 
 TEST(example, behaviour)

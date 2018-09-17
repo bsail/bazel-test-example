@@ -1,8 +1,8 @@
 #include "unity.h"
 #include "unity_fixture.h"
 #include "src/example.h"
-#include "src/lib/inc/mock_library.h"
-#include "src/another/inc/mock_another.h"
+#include "mock_library.h"
+#include "mock_another.h"
 
 int GlobalVerifyOrder = 0;
 int GlobalExpectCount = 0;
@@ -25,10 +25,10 @@ void test_always_pass(void)
 void test_example(void)
 {
 	another_func_Expect(55);
-	library_func_Expect(0);
-	library_func_Expect(1);
-	library_func_Expect(2);
-	library_func_Expect(3);
-	library_func_Expect(4);
+	library_func_ExpectAndReturn(0,0);
+	library_func_ExpectAndReturn(1,0);
+	library_func_ExpectAndReturn(2,0);
+	library_func_ExpectAndReturn(3,0);
+	library_func_ExpectAndReturn(4,0);
 	TEST_ASSERT_EQUAL(0, example_func());
 }
