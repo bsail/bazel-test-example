@@ -43,3 +43,15 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
+filegroup(
+    name = "create_mock",
+    srcs = ["scripts/create_mock.rb"],
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "readme",
+    srcs = ["README.md"],
+    path = ".",
+    visibility = ["//visibility:public"],
+)

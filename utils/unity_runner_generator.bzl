@@ -12,8 +12,33 @@ def unity_runner(name, src, **kwargs):
         "@unity//:auto",
         "@unity//:readme",
     ],
-    local = 1,
     cmd = "export UNITY_DIR=$$(pwd)/$$(dirname $(location @unity//:readme)) && \
       ruby $(location @cmock//:create_runner) $< $@",
+    **kwargs
+  )
+
+def cmock_generator(prefix, src, type, **kwargs):
+  """Create a Unity test runner for the src header file.
+
+  The generated file is prefixed with 'Runner_'.
+  """
+  native.genrule(
+    name = "header_"+prefix+"_"+type,
+    srcs = [src],
+    outs = ["mock_"+prefix+"."+type],
+    tools = [
+        "@cmock//:cmock_rb",
+        "@cmock//:lib",
+        "@cmock//:config",
+        "@unity//:readme",
+        "@unity//:auto",
+        "@cmock//:readme",
+        "//utils/mock:cmock_config",
+    ],
+    cmd = "export UNITY_DIR=$$(pwd)/$$(dirname $(location @unity//:readme)) && \
+    export CMOCK_DIR=$$(pwd)/$$(dirname $(location @cmock//:readme)) && \
+    export MOCK_OUT=. && \
+    ruby $(location @cmock//:cmock_rb) -o$(location //utils/mock:cmock_config) $< && \
+    cat mock_"+prefix+"."+type+" > $@",
     **kwargs
   )
