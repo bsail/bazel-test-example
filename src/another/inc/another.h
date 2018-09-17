@@ -1,11 +1,11 @@
-#ifndef _LIBRARY_H
-#define _LIBRARY_H
+#ifndef _ANOTHER_H
+#define _ANOTHER_H
 
 #ifdef  __cplusplus
 extern "C" {
 #endif
 
-	void library_func(int a);
+	void another_func(int a);
 
 #ifdef  __cplusplus
 }

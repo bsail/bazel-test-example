@@ -23,6 +23,7 @@ cc_test(
         "@cmock//:cmock",
         "//src:example_with_cmock",
         "//src/lib:mock_library",
+        "//src/another:mock_another",
     ],
 )
 

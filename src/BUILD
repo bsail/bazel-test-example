@@ -37,7 +37,7 @@ custom_cc_libary(
     name = LIBRARY_NAME,
     srcs = ["example.c"],
     hdr = LIBRARY_NAME+".h",
-    deps = ["//src/lib:library"],
+    deps = ["//src/lib:library","//src/another:another"],
     visibility = ["//test:__pkg__","//src:__pkg__"],
 )
 
@@ -45,7 +45,7 @@ custom_cc_libary(
     name = LIBRARY_NAME+"_with_cmock",
     srcs = ["example.c"],
     hdr = LIBRARY_NAME+".h",
-    deps = ["//src/lib:mock_library"],
+    deps = ["//src/lib:mock_library","//src/another:mock_another"],
     visibility = ["//test:__pkg__","//src:__pkg__"],
 )
 
