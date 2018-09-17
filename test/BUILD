@@ -1,4 +1,8 @@
 load("@utils//:unity_runner_generator.bzl", "unity_runner")
+load("@utils//:unity_runner_generator.bzl", "UNITY_COPTS")
+load("@utils//:unity_runner_generator.bzl", "UNITY_DEPS")
+load("@utils//:unity_runner_generator.bzl", "GTEST_COPTS")
+load("@utils//:unity_runner_generator.bzl", "GTEST_DEPS")
 
 unity_runner(
     name = "runner_example_test",
@@ -11,31 +15,21 @@ cc_test(
         "example_test.c",
         "runner_example_test.c",
     ],
-    copts = [
-        "-Iexternal/unity/src/",
-        "-Iexternal/unity/extras/fixture/src/",
-        "-Iexternal/cmock/src/",
-    ],
+    copts = UNITY_COPTS,
     size = "small",
     deps = [
-        "@unity//:unity",
-        "@unity//:unity_framework",
-        "@cmock//:cmock",
         "//src:example_with_cmock",
         "//src/lib:mock_library",
         "//src/another:mock_another",
-    ],
+    ] + UNITY_DEPS,
 )
 
 cc_test(
     name = "example_gtest_test",
     srcs = ["example_gtest.cc"],
-    copts = ["-Iexternal/gtest/include"],
+    copts = GTEST_COPTS,
     size = "small",
     deps = [
-        "@gtest//:gtest",
-        "@gtest//:gtest_main", # Only if hello_test.cc has no main()
-        "@fff//:fff",
         "//src:example",
-    ],
+    ] + GTEST_DEPS,
 )

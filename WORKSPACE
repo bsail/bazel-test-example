@@ -2,7 +2,7 @@ http_archive(
     name = "utils",
     strip_prefix = "bazel-utils-master",
     url = "https://github.com/bsail/bazel-utils/archive/master.zip",
-    sha256 = "1933519657498e3a41d7939ca43679c150f28b9a3629bbf51c4ae95f375d3410",
+    #sha256 = "1933519657498e3a41d7939ca43679c150f28b9a3629bbf51c4ae95f375d3410",
 )
 
 http_archive(
