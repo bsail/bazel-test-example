@@ -31,6 +31,16 @@ cc_binary(
     }),
 )
 
+hex(
+    name = "main_hex",
+    src = ":main"
+)
+
+listing(
+    name = "main_listing",
+    src = ":main"
+)
+
 LIBRARY_NAME = "example"
 
 custom_cc_libary(
@@ -47,14 +57,4 @@ custom_cc_libary(
     hdr = LIBRARY_NAME+".h",
     deps = ["//src/lib:mock_library","//src/another:mock_another"],
     visibility = ["//test:__pkg__","//src:__pkg__"],
-)
-
-hex(
-    name = "main_hex",
-    src = ":main"
-)
-
-listing(
-    name = "main_listing",
-    src = ":main"
 )

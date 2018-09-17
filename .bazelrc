@@ -1,0 +1,6 @@
+build:m2560 --crosstool_top=@avr_tools//tools/avr:toolchain
+build:m2560 --distinct_host_configuration=false
+build:m2560 --define=MCU=atmega2560
+build:m2560 --copt -DF_CPU=16000000 --cpu=avr
+
+test --verbose_failures
