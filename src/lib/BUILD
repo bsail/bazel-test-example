@@ -14,7 +14,9 @@ config_setting(
 
 custom_cc_libary(
     name = LIBRARY_NAME,
-    srcs = ["src/library.c"],
+    srcs = glob(
+        ["src/*"],
+    ),
     hdr = "inc/"+LIBRARY_NAME+".h",
     visibility = ["//test:__pkg__","//src:__pkg__"],
 )

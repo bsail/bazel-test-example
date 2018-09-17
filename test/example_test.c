@@ -9,6 +9,8 @@ int GlobalExpectCount = 0;
 
 void setUp()
 {
+	GlobalVerifyOrder = 0;
+	GlobalExpectCount = 0;
 }
 
 void tearDown()
