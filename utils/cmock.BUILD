@@ -36,3 +36,10 @@ filegroup(
     ),
     visibility = ["//visibility:public"],
 )
+
+filegroup(
+    name = "create_runner",
+    srcs = ["scripts/create_runner.rb"],
+    visibility = ["//visibility:public"],
+)
+

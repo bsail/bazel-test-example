@@ -28,24 +28,16 @@ cc_library(
 )
 
 filegroup(
-    name = "runner_generator",
-    srcs = [
-      "auto/generate_test_runner.rb",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-filegroup(
-    name = "type_sanitizer",
-    srcs = [
-      "auto/type_sanitizer.rb",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-filegroup(
     name = "readme",
     srcs = ["README.md"],
     path = ".",
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "auto",
+    srcs = glob(
+        ["auto/*"]
+    ),
     visibility = ["//visibility:public"],
 )
