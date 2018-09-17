@@ -23,7 +23,7 @@ def cmock_generator(prefix, src, where, type, **kwargs):
   The generated file is prefixed with 'Runner_'.
   """
   native.genrule(
-    name = "header_"+prefix+"_"+type,
+    name = "mock_"+prefix+"_"+type,
     srcs = [src],
     outs = [where+"/mock_"+prefix+"."+type],
     tools = [

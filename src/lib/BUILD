@@ -1,5 +1,9 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
 load("//utils:unity_runner_generator.bzl", "cmock_generate")
+load("//utils:custom_macro.bzl", "custom_cc_libary")
+load("//utils:custom_macro.bzl", "custom_cc_libary_mock")
+
+LIBRARY_NAME = "library"
 
 config_setting(
     name = "avr",
@@ -8,57 +12,26 @@ config_setting(
     },
 )
 
-cc_library(
-    name = "library",
+custom_cc_libary(
+    name = LIBRARY_NAME,
     srcs = ["src/library.c"],
-    hdrs = ["inc/library.h"],
-    copts = select({
-        ":avr": ["-mmcu=$(MCU)"],
-        "//conditions:default": [],
-    }),
-    includes = [
-        "./inc/",
-        ],
-    linkopts = select({
-        ":avr": ["-mmcu=$(MCU)"],
-        "//conditions:default": [],
-    }),
+    hdr = "inc/"+LIBRARY_NAME+".h",
     visibility = ["//test:__pkg__","//src:__pkg__"],
 )
 
 filegroup(
-    name = "library_header",
-    srcs = ["inc/library.h"],
-    visibility = ["//utils:__pkg__"],
+    name = LIBRARY_NAME+"_header",
+    srcs = ["inc/"+LIBRARY_NAME+".h"],
 )
 
 cmock_generate(
-    prefix = "library",
-    src = ":library_header",
+    prefix = LIBRARY_NAME,
+    src = ":"+LIBRARY_NAME+"_header",
 )
 
-cc_library(
-    name = "mock_library",
-    srcs = [
-        "src/mock_library.c",
-        ],
-    hdrs = [
-        "inc/mock_library.h",
-        ":library_header",
-        ],
-    includes = [
-        "./inc/",
-        ],
-    copts = [
-        "-Iexternal/unity/src/",
-        "-Iexternal/unity/extras/fixture/src/",
-        "-Iexternal/cmock/src/",
-        "-Isrc/lib/inc/",
-    ],
-    deps = [
-        #"@unity//:unity",
-        #"@unity//:unity_framework",
-        "@cmock//:cmock",
-    ],
+custom_cc_libary_mock(
+    name = LIBRARY_NAME,
+    hdr = ":"+LIBRARY_NAME+"_header",
+    deps = [],
     visibility = ["//test:__pkg__","//src:__pkg__"],
 )

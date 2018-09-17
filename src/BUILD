@@ -1,4 +1,5 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
+load("//utils:custom_macro.bzl", "custom_cc_libary")
 
 config_setting(
     name = "avr",
@@ -30,23 +31,22 @@ cc_binary(
     }),
 )
 
-cc_library(
-    name = "example",
+LIBRARY_NAME = "example"
+
+custom_cc_libary(
+    name = LIBRARY_NAME,
     srcs = ["example.c"],
-    hdrs = ["example.h"],
-    deps = select({
-        ":use_cmock": ["//src/lib:mock_library"],
-        "//conditions:default": ["//src/lib:library"],
-    }),
-    copts = select({
-        ":avr": ["-mmcu=$(MCU)"],
-        "//conditions:default": [],
-    }),
-    linkopts = select({
-        ":avr": ["-mmcu=$(MCU)"],
-        "//conditions:default": [],
-    }),
-    visibility = ["//test:__pkg__"],
+    hdr = LIBRARY_NAME+".h",
+    deps = ["//src/lib:library"],
+    visibility = ["//test:__pkg__","//src:__pkg__"],
+)
+
+custom_cc_libary(
+    name = LIBRARY_NAME+"_with_cmock",
+    srcs = ["example.c"],
+    hdr = LIBRARY_NAME+".h",
+    deps = ["//src/lib:mock_library"],
+    visibility = ["//test:__pkg__","//src:__pkg__"],
 )
 
 hex(
@@ -58,4 +58,3 @@ listing(
     name = "main_listing",
     src = ":main"
 )
-
