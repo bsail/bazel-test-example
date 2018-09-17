@@ -42,3 +42,10 @@ filegroup(
     ],
     visibility = ["//visibility:public"],
 )
+
+filegroup(
+    name = "readme",
+    srcs = ["README.md"],
+    path = ".",
+    visibility = ["//visibility:public"],
+)

@@ -6,7 +6,7 @@ def unity_runner(name, src, **kwargs):
   native.genrule(
     name = name,
     srcs = [src],
-    outs = [name],
+    outs = [name+".c"],
     tools = [
         "@unity//:runner_generator",
         "@unity//:type_sanitizer",
