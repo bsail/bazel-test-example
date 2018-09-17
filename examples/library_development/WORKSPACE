@@ -1,15 +1,15 @@
 http_archive(
     name = "utils",
-    strip_prefix = "bazel-utils-master",
-    url = "https://github.com/bsail/bazel-utils/archive/master.zip",
-    #sha256 = "1933519657498e3a41d7939ca43679c150f28b9a3629bbf51c4ae95f375d3410",
+    strip_prefix = "bazel-utils-0.1",
+    url = "https://github.com/bsail/bazel-utils/archive/v0.1.zip",
+    sha256 = "048efde9cd848be1053baabe401ce4c8a5bc0c139800078e54d378ebef22042b",
 )
 
 http_archive(
     name = "avr_tools",
-    strip_prefix = "bazel-avr-tools-master",
-    url = "https://github.com/bsail/bazel-avr-tools/archive/master.zip",
-    sha256 = "09b64a154f57a859b08b063abadbced4e2b82910d30e111813169f2763cdce34",
+    strip_prefix = "bazel-avr-tools-0.1",
+    url = "https://github.com/bsail/bazel-avr-tools/archive/v0.1.zip",
+    sha256 = "15977359826e29bbbc1fab44402abbadfedd945c700551514aa221957c53bc7d",
 )
 
 new_http_archive(
@@ -30,9 +30,9 @@ http_archive(
 new_http_archive(
     name = "fff",
     build_file = "@utils//:fff.BUILD",
-    strip_prefix = "fff-master",
-    url = "https://github.com/meekrosoft/fff/archive/master.zip",
-    sha256 = "d7ae97dd0b6be82ece09beef75bd0094b31a747caad6b84154a698540a478662",
+    strip_prefix = "fff-0.1",
+    url = "https://github.com/bsail/fff/archive/v0.1.zip",
+    sha256 = "fb890d15478693cd469521643292d8b10380b0a115c3cdb0ab170f115a1a50dc",
 )
 
 new_http_archive(
