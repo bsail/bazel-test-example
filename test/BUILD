@@ -1,4 +1,4 @@
-load("//utils:unity_runner_generator.bzl", "unity_runner")
+load("@utils//:unity_runner_generator.bzl", "unity_runner")
 
 unity_runner(
     name = "runner_example_test",

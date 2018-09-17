@@ -1,7 +1,10 @@
-#local_repository(
-#    name = "avr_tools",
-#    path = "/home/mrenouf/bazel-avr-tools"
-#)
+http_archive(
+    name = "utils",
+    strip_prefix = "bazel-utils-master",
+    urls = [
+        "https://github.com/bsail/bazel-utils/archive/master.zip",
+    ],
+)
 
 http_archive(
     name = "avr_tools",
@@ -15,7 +18,7 @@ http_archive(
 new_http_archive(
     name = "unity",
     url = "https://github.com/ThrowTheSwitch/Unity/archive/v2.4.1.zip",
-    build_file = "utils/unity.BUILD",
+    build_file = "@utils//:unity.BUILD",
     sha256 = "f1c7a30917be617668a5a2608f1185338ce58f51e7ba3c8247dcb76263bc2e96",
     strip_prefix = "Unity-2.4.1",
 )
@@ -29,7 +32,7 @@ git_repository(
 new_http_archive(
     name = "fff",
     url = "https://github.com/meekrosoft/fff/archive/master.zip",
-    build_file = "utils/fff.BUILD",
+    build_file = "@utils//:fff.BUILD",
     strip_prefix = "fff-master",
 )
 
@@ -37,6 +40,6 @@ new_http_archive(
     name = "cmock",
     url = "https://github.com/ThrowTheSwitch/CMock/archive/v2.4.6.zip",
     sha256 = "8fa6dcb88778e029dd4a69ce7d3df529f9f022e5b6ec93ae378cd8b898eb05d4",
-    build_file = "utils/cmock.BUILD",
+    build_file = "@utils//:cmock.BUILD",
     strip_prefix = "CMock-2.4.6",
 )

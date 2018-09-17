@@ -1,7 +1,7 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
-load("//utils:unity_runner_generator.bzl", "cmock_generate")
-load("//utils:custom_macro.bzl", "custom_cc_libary")
-load("//utils:custom_macro.bzl", "custom_cc_libary_mock")
+load("@utils//:unity_runner_generator.bzl", "cmock_generate")
+load("@utils//:custom_macro.bzl", "custom_cc_libary")
+load("@utils//:custom_macro.bzl", "custom_cc_libary_mock")
 
 LIBRARY_NAME = "library"
 

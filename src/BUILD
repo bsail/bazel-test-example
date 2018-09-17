@@ -1,5 +1,5 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
-load("//utils:custom_macro.bzl", "custom_cc_libary")
+load("@utils//:custom_macro.bzl", "custom_cc_libary")
 
 config_setting(
     name = "avr",
