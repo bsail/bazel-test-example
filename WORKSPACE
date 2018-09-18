@@ -1,8 +1,8 @@
 http_archive(
     name = "utils",
-    strip_prefix = "bazel-utils-0.1",
-    url = "https://github.com/bsail/bazel-utils/archive/v0.1.zip",
-    sha256 = "048efde9cd848be1053baabe401ce4c8a5bc0c139800078e54d378ebef22042b",
+    strip_prefix = "bazel-utils-master",
+    url = "https://github.com/bsail/bazel-utils/archive/master.zip",
+    # sha256 = "048efde9cd848be1053baabe401ce4c8a5bc0c139800078e54d378ebef22042b",
 )
 
 http_archive(

@@ -1,5 +1,5 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
-load("@utils//:custom_macro.bzl", "custom_cc_libary")
+load("@utils//:custom_macro.bzl", "custom_cc_library")
 
 config_setting(
     name = "avr",
@@ -43,7 +43,7 @@ listing(
 
 LIBRARY_NAME = "example"
 
-custom_cc_libary(
+custom_cc_library(
     name = LIBRARY_NAME,
     srcs = ["example.c"],
     hdr = LIBRARY_NAME+".h",
@@ -51,7 +51,7 @@ custom_cc_libary(
     visibility = ["//test:__pkg__","//src:__pkg__"],
 )
 
-custom_cc_libary(
+custom_cc_library(
     name = LIBRARY_NAME+"_with_cmock",
     srcs = ["example.c"],
     hdr = LIBRARY_NAME+".h",

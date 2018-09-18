@@ -1,7 +1,7 @@
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
 load("@utils//:unity_runner_generator.bzl", "cmock_generate")
-load("@utils//:custom_macro.bzl", "custom_cc_libary")
-load("@utils//:custom_macro.bzl", "custom_cc_libary_mock")
+load("@utils//:custom_macro.bzl", "custom_cc_library")
+load("@utils//:custom_macro.bzl", "custom_cc_library_mock")
 
 LIBRARY_NAME = "another"
 
@@ -12,7 +12,7 @@ config_setting(
     },
 )
 
-custom_cc_libary(
+custom_cc_library(
     name = LIBRARY_NAME,
     srcs = glob(
         ["src/*"],
@@ -31,7 +31,7 @@ cmock_generate(
     src = ":"+LIBRARY_NAME+"_header",
 )
 
-custom_cc_libary_mock(
+custom_cc_library_mock(
     name = LIBRARY_NAME,
     hdr = ":"+LIBRARY_NAME+"_header",
     deps = [],

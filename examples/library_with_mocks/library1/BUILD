@@ -86,8 +86,8 @@ LIBRARY_TEST_GTEST_DEPS = LIBRARY_DEPS
 
 load("@avr_tools//tools/avr:hex.bzl", "hex", "eeprom", "listing")
 load("@utils//:unity_runner_generator.bzl", "cmock_generate")
-load("@utils//:custom_macro.bzl", "custom_cc_libary")
-load("@utils//:custom_macro.bzl", "custom_cc_libary_mock")
+load("@utils//:custom_macro.bzl", "custom_cc_library")
+load("@utils//:custom_macro.bzl", "custom_cc_library_mock")
 load("@utils//:unity_runner_generator.bzl", "unity_runner")
 load("@utils//:unity_runner_generator.bzl", "UNITY_COPTS")
 load("@utils//:unity_runner_generator.bzl", "UNITY_DEPS")
@@ -118,7 +118,7 @@ filegroup(
 ##                                                                            ##
 ################################################################################
 
-custom_cc_libary(
+custom_cc_library(
     name = LIBRARY_NAME,
     srcs = glob(
         ["src/*"],
@@ -130,7 +130,7 @@ custom_cc_libary(
     visibility = LIBRARY_VISIBILITY,
 )
 
-custom_cc_libary(
+custom_cc_library(
     name = LIBRARY_NAME+"_for_mocking",
     srcs = glob(
         ["src/*"],
@@ -151,7 +151,7 @@ cmock_generate(
     src = ":"+LIBRARY_NAME+"_header",
 )
 
-custom_cc_libary_mock(
+custom_cc_library_mock(
     name = LIBRARY_NAME,
     hdr = LIBRARY_NAME+"_header",
     deps = LIBRARY_CMOCK_DEPS,
