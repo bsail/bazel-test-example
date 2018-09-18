@@ -137,6 +137,7 @@ custom_cc_libary(
     ),
     hdr = LIBRARY_NAME+"_header",
     deps = LIBRARY_TEST_UNITY_DEPS,
+    testonly = True,
 )
 
 ################################################################################
@@ -155,6 +156,7 @@ custom_cc_libary_mock(
     hdr = LIBRARY_NAME+"_header",
     deps = LIBRARY_CMOCK_DEPS,
     visibility = LIBRARY_VISIBILITY,
+    testonly = True,
 )
 
 ################################################################################
